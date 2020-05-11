@@ -1,0 +1,19 @@
+def revenue(filename):
+    """Возвращает сумму выручки в третьем столбце файла filename"""
+    
+    total_sum = 0
+    with open(filename) as f:
+        for line in f:
+            line = line.strip().split('\t')
+            
+            try:
+                value = float(line[2].replace(',', '.'))
+            except:
+                print('Битая строка', line)
+
+            total_sum += value
+    
+    return total_sum
+        
+            
+revenue('real_data.txt')
